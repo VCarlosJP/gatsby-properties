@@ -1,29 +1,45 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { graphql } from 'gatsby'
+
+import * as styles from './index.module.css'
 
 import Layout from "../components/layout"
+import PropertieCard from "../components/PropertieCard"
 import Seo from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({data}) => (
   <Layout>
     <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+
+  <div className={styles.properties_container}>
+  {data.allStrapiProperties.nodes.map((propertie, index) =>(
+      <PropertieCard key={index} {...propertie}/>
+    ))}
+  </div>
   </Layout>
 )
+
+export const query = graphql`
+  query PropertiesQuery {
+    allStrapiProperties{
+      nodes{
+        id,
+        address,
+        price,
+        category{name}
+        picture{
+          childImageSharp{
+            fluid(maxHeight:350, maxWidth:600, cropFocus: CENTER, fit: COVER){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    },
+    
+  }
+`
 
 export default IndexPage
