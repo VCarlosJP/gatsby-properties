@@ -32,7 +32,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: process.env.DEPLOY_URL
+        ? "https://still-meadow-29141.herokuapp.com/"
+        : "http://localhost:1337",
         queryLimit: 1000,
         contentTypes: [`properties`]
       }
