@@ -18,7 +18,7 @@ const PropertyPage = ({data}) =>{
                 <span><b>{property.price}</b></span>
             </div>
             <div>
-                <Img fixed={property.picture.childImageSharp.fixed} />
+                <Img fluid={property.picture.childImageSharp.fluid} />
             </div>
         </div>
         <div className={styles.mambo}>
@@ -48,8 +48,8 @@ export const query = graphql`
         category{name},
         picture{
           childImageSharp{
-            fixed(width:460){
-              ...GatsbyImageSharpFixed
+            fluid(maxHeight:350){
+              ...GatsbyImageSharpFluid
             }
           }
         }

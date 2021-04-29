@@ -1,7 +1,17 @@
-.property_container{
-    display: grid;
-    grid-template-columns: 500px auto;
+@media only screen and (max-width: 999px) {
+    .property_container{
+        display: grid;
+        grid-template-rows: auto auto;
+    }
 }
+@media screen and (min-width: 1000px) {
+    .property_container{
+        display: grid;
+        grid-template-columns: 500px auto;
+    }
+}
+
+
 
 .details_container{
     display: flex;
