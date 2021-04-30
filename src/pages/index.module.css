@@ -1,5 +1,5 @@
-.properties_container{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.properties_container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
