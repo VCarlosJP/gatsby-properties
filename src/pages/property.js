@@ -9,6 +9,7 @@ const PropertyPage = ({ data }) => {
   const property = data.allStrapiProperties.nodes[0]
   return (
     <Layout>
+      <Seo title="Properties" />
       <div className={styles.property_header}>
         <div className={styles.details_container}>
           <h1>{property.title}</h1>
