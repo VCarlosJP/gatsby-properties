@@ -4,11 +4,13 @@ import Img from "gatsby-image"
 import * as styles from "./PropertieCard.module.css"
 import { Link } from "gatsby"
 
-const PropertieCard = ({ id, category, address, price, picture }) => {
+const PropertieCard = ({
+  propertie: { id, category, address, price, picture },
+}) => {
   return (
     <Link to={`properties/${id}`}>
       <div className={styles.property_card}>
-        <Img fluid={picture.childImageSharp.fluid} />
+        <Img fixed={picture.childImageSharp.fixed} />
         <div className={styles.card_details}>
           <div>
             <span>

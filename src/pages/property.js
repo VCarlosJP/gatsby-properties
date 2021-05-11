@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 import Img from "gatsby-image"
 
 const PropertyPage = ({ data }) => {
-  const property = data.allStrapiProperties.nodes[0]
+  const property = data.strapiProperties
   return (
     <Layout>
       <Seo title="Properties" />
@@ -45,23 +45,21 @@ const PropertyPage = ({ data }) => {
 
 export const query = graphql`
   query($id: String) {
-    allStrapiProperties(filter: { id: { eq: $id } }) {
-      nodes {
-        id
-        title
-        address
-        price
-        room
-        bathroom
-        description
-        category {
-          name
-        }
-        picture {
-          childImageSharp {
-            fluid(maxHeight: 350) {
-              ...GatsbyImageSharpFluid
-            }
+    strapiProperties(id: { eq: $id }) {
+      id
+      title
+      address
+      price
+      room
+      bathroom
+      description
+      category {
+        name
+      }
+      picture {
+        childImageSharp {
+          fluid(maxHeight: 350) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

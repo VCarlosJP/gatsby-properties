@@ -32,12 +32,10 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.DEPLOY_URL
-        ? "https://still-meadow-29141.herokuapp.com"
-        : "http://localhost:1337",
+        apiURL: "https://still-meadow-29141.herokuapp.com",
         queryLimit: 1000,
-        contentTypes: [`properties`]
-      }
+        contentTypes: [`properties`],
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
