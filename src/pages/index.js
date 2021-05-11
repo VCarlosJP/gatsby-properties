@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => (
 
     <div className={styles.properties_container}>
       {data.allStrapiProperties.nodes.map((propertie, index) => (
-        <PropertieCard key={index} {...propertie} />
+        <PropertieCard key={index} propertie={propertie} />
       ))}
     </div>
   </Layout>
@@ -33,13 +33,8 @@ export const query = graphql`
         }
         picture {
           childImageSharp {
-            fluid(
-              maxHeight: 350
-              maxWidth: 600
-              cropFocus: CENTER
-              fit: COVER
-            ) {
-              ...GatsbyImageSharpFluid
+            fixed(width: 300, height: 176, cropFocus: CENTER, fit: COVER) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
